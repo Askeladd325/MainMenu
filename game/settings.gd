@@ -8,13 +8,17 @@ extends Control
 @onready var english_btn: CheckButton = $"CanvasLayer/Panel/Language panel/VBoxContainer/englishBtn"
 @onready var filipino_btn: CheckButton = $"CanvasLayer/Panel/Language panel/VBoxContainer/filipinoBtn"
 @onready var kitchen: Node2D = $kitchen
+@onready var cooking_station: Node2D = $cooking_station
+@onready var joystick_canvas: CanvasLayer = $kitchen/joystick_canvas
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	language_panel.visible = false;
 	sound_panel.visible = false;
 	kitchen.visible = false;
+	cooking_station.visible = false;
+	joystick_canvas.visible = false;
 
 func _on_language_pressed() -> void:
 	language_panel.visible = true;
@@ -25,7 +29,6 @@ func _on_back_pressed() -> void:
 	language_panel.visible = false;
 	settings_button.visible = true;
 	label.visible = true;
-
 
 func _on_soundSetting_pressed() -> void:
 	sound_panel.visible = true;
@@ -48,7 +51,7 @@ func _on_languageSaveBtn_pressed() -> void:
 	settings_button.visible = true;
 	label.visible = true;
 
-
-func _on_button_pressed() -> void:
+func _on_play_pressed() -> void:
 	panel.visible = false;
+	joystick_canvas.visible = true;
 	kitchen.visible = true;

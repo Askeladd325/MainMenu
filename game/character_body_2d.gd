@@ -1,9 +1,12 @@
 extends CharacterBody2D
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var joystick: Control = $"../CanvasLayer/Virtual joystick"
-@onready var mapLayer2: TileMapLayer = $"../TileMapLayer/TileMapLayer2"
+@onready var joystick: Control = $"../joystick_canvas/Virtual joystick"
 @onready var mapLayer1: TileMapLayer = $"../TileMapLayer"
-@onready var mapLayer3: TileMapLayer = $"../TileMapLayer/TileMapLayer2/TileMapLayer3"
+@onready var mapLayer2: TileMapLayer = $"../TileMapLayer2"
+@onready var mapLayer3: TileMapLayer = $"../TileMapLayer3"
+@onready var cooking_station: Node2D = $"../../cooking_station"
+@onready var kitchen: Node2D = $".."
+@onready var animation_player: AnimationPlayer = $"../../transtion_canvas/AnimationPlayer"
 
 const SPEED = 100.0
 var last_direction: Vector2 = Vector2.DOWN
@@ -30,22 +33,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	_handle_animations(move_direction)
 	
-	# --- MULTI-LAYER DEBUG CODE ---
-	var pos_to_check = global_position
-	
-	var tile_l1 = mapLayer1.local_to_map(mapLayer1.to_local(pos_to_check))
-	var tile_l2 = mapLayer2.local_to_map(mapLayer2.to_local(pos_to_check))
-	var tile_l3 = mapLayer3.local_to_map(mapLayer3.to_local(pos_to_check))
-	
-	print("L1 ID: ", mapLayer1.get_cell_source_id(tile_l1), 
-		  " | L2 ID: ", mapLayer2.get_cell_source_id(tile_l2), 
-		  " | L3 ID: ", mapLayer3.get_cell_source_id(tile_l3))
-	# -------------------------------
-
-
-
-	
-	
 func _handle_animations(direction: Vector2):
 	if direction == Vector2.ZERO:
 		if last_direction == Vector2.RIGHT:
@@ -65,19 +52,24 @@ func _handle_animations(direction: Vector2):
 		animatedSprite.play("walking_up")
 	elif direction == Vector2.DOWN:
 		animatedSprite.play("walking_down")
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Interact"):
-		_try_interact()
 		
 func _try_interact():
 	var player_tile_pos = mapLayer2.local_to_map(global_position)
 	var tile_data = mapLayer2.get_cell_tile_data(player_tile_pos)
+	print("l2 tiledata: ", tile_data)
 	
 	if tile_data:
 		var is_interactable = tile_data.get_custom_data("kitchen station")
 		if is_interactable:
+			print("interactable found!")
 			_trigger_tile_action(player_tile_pos)
 			
 func _trigger_tile_action(tile_coords: Vector2i):
-	print("just testing")
+	animation_player.play("fade_out")
+	await animation_player.animation_finished
+	
+	cooking_station.visible = true
+	animation_player.play("fade_in")
+
+func _on_button_pressed() -> void:
+	_try_interact()
