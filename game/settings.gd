@@ -10,15 +10,30 @@ extends Control
 @onready var kitchen: Node2D = $kitchen
 @onready var cooking_station: Node2D = $cooking_station
 @onready var joystick_canvas: CanvasLayer = $kitchen/joystick_canvas
+@onready var dictionary: Node2D = $resource_dictionary
+@onready var condiment_markers: Node2D = $"cooking_station/condiment markers"
+@onready var markers = condiment_markers.get_children().filter(func(node): return node is Marker2D)
 
+const condiment_scene = preload("res://condiments.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	language_panel.visible = false;
 	sound_panel.visible = false;
 	kitchen.visible = false;
-	cooking_station.visible = false;
+	cooking_station.visible = true;
 	joystick_canvas.visible = false;
+	
+	var slot := 0
+	
+	for condiment_list in dictionary.condiments:
+		var condiment = condiment_scene.instantiate()
+		add_child(condiment)
+		condiment.set_condiment(condiment_list["name"], condiment_list["image"])
+		
+		condiment.global_position = markers[slot].global_position
+		
+		slot += 1
 
 func _on_language_pressed() -> void:
 	language_panel.visible = true;

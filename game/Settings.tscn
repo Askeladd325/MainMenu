@@ -10,7 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://chq0nadnfm2gi" path="res://player/gppHxF.png" id="8_xffxv"]
 [ext_resource type="Texture2D" uid="uid://copml70ns1jot" path="res://player/virtual joystick.png" id="9_6ilhj"]
 [ext_resource type="Script" uid="uid://cst62wl83vef5" path="res://virtual_joystick.gd" id="9_xffxv"]
-[ext_resource type="Texture2D" uid="uid://2og44sww8ald" path="res://kitchen/kitchen station v2 (1).png" id="11_6ilhj"]
+[ext_resource type="Texture2D" uid="uid://bsxytq0ogr80v" path="res://kitchen/kitchen station v2 (2).png" id="11_jxk5e"]
+[ext_resource type="PackedScene" uid="uid://bi17m2n3568ji" path="res://ingredients.tscn" id="12_7uyog"]
+[ext_resource type="Script" uid="uid://dx2xc4kjk14se" path="res://basket.gd" id="14_7uyog"]
+[ext_resource type="Texture2D" uid="uid://bcq8rpq7efudb" path="res://kitchen/basket.png" id="14_xdgdu"]
+[ext_resource type="Script" uid="uid://cur6igeegpd4p" path="res://resource_dictionary.gd" id="15_sgfxa"]
+[ext_resource type="Script" uid="uid://nmncvtfbxntt" path="res://pan.gd" id="15_ta4r8"]
+[ext_resource type="Texture2D" uid="uid://dk6fnhejy6qjd" path="res://kitchen/pan.png" id="16_coixn"]
+[ext_resource type="PackedScene" uid="uid://wh2mqe2d0a1h" path="res://condiments.tscn" id="17_coixn"]
+[ext_resource type="Script" uid="uid://kohggr3slt5p" path="res://particle.gd" id="17_ftasa"]
+[ext_resource type="Script" uid="uid://6qfdk7waagpy" path="res://quant.gd" id="19_w2dd0"]
+[ext_resource type="Texture2D" uid="uid://dirljpg2pvyla" path="res://kitchen/sampleState1.png" id="21_jxk5e"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ostoq"]
 texture = ExtResource("1_2fv1l")
@@ -1952,8 +1962,8 @@ size = Vector2(46, 11)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugore"]
 size = Vector2(30, 22)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10mky"]
-texture = ExtResource("11_6ilhj")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1y8r"]
+texture = ExtResource("11_jxk5e")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -2176,7 +2186,22 @@ texture = ExtResource("11_6ilhj")
 19:10/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_uj04i"]
-sources/1 = SubResource("TileSetAtlasSource_10mky")
+sources/0 = SubResource("TileSetAtlasSource_j1y8r")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7uyog"]
+size = Vector2(69, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5viw"]
+size = Vector2(40, 34.166664)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w2dd0"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7h7mn"]
+bg_color = Color(0.35365903, 0.69866836, 0.14678302, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w2dd0"]
 
 [sub_resource type="Animation" id="Animation_vm3k5"]
 length = 0.001
@@ -2191,6 +2216,44 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sample_finish:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../flash:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ftasa"]
+resource_name = "condimentAdd"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../cooking_station/pan")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_xdgdu"]
@@ -2225,11 +2288,58 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_j1y8r"]
+resource_name = "finish_saute"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../sample_finish:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../flash:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ta4r8"]
+resource_name = "ingredientAdd"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../cooking_station/pan")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ingredient_to_pan_animation"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sgfxa"]
 _data = {
 &"RESET": SubResource("Animation_vm3k5"),
+&"condimentAdd": SubResource("Animation_ftasa"),
 &"fade_in": SubResource("Animation_xdgdu"),
-&"fade_out": SubResource("Animation_7uyog")
+&"fade_out": SubResource("Animation_7uyog"),
+&"finish_saute": SubResource("Animation_j1y8r"),
+&"ingredientAdd": SubResource("Animation_ta4r8")
 }
 
 [node name="Settings" type="Control" unique_id=761670207]
@@ -2245,6 +2355,7 @@ script = ExtResource("1_mx4kw")
 position = Vector2(240, 135)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1516077137]
+visible = false
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1139721301]
 anchors_preset = 15
@@ -2675,8 +2786,224 @@ shape = SubResource("RectangleShape2D_ugore")
 
 [node name="backgroudn" type="TileMapLayer" parent="cooking_station" unique_id=887255619]
 scale = Vector2(1.5, 1.53)
-tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAIAAAAAAAMAAQAAAAMAAAAAAAQAAQAAAAQAAAAAAAUAAQAAAAUAAAAAAAYAAQAAAAYAAAAAAAcAAQAAAAcAAAAAAAgAAQAAAAgAAAAAAAkAAQAAAAkAAAAAAAoAAQAAAAoAAAABAAAAAQABAAAAAAABAAEAAQABAAEAAAABAAIAAQABAAIAAAABAAMAAQABAAMAAAABAAQAAQABAAQAAAABAAUAAQABAAUAAAABAAYAAQABAAYAAAABAAcAAQABAAcAAAABAAgAAQABAAgAAAABAAkAAQABAAkAAAABAAoAAQABAAoAAAACAAAAAQACAAAAAAACAAEAAQACAAEAAAACAAIAAQACAAIAAAACAAMAAQACAAMAAAACAAQAAQACAAQAAAACAAUAAQACAAUAAAACAAYAAQACAAYAAAACAAcAAQACAAcAAAACAAgAAQACAAgAAAACAAkAAQACAAkAAAACAAoAAQACAAoAAAADAAAAAQADAAAAAAADAAEAAQADAAEAAAADAAIAAQADAAIAAAADAAMAAQADAAMAAAADAAQAAQADAAQAAAADAAUAAQADAAUAAAADAAYAAQADAAYAAAADAAcAAQADAAcAAAADAAgAAQADAAgAAAADAAkAAQADAAkAAAADAAoAAQADAAoAAAAEAAAAAQAEAAAAAAAEAAEAAQAEAAEAAAAEAAIAAQAEAAIAAAAEAAMAAQAEAAMAAAAEAAQAAQAEAAQAAAAEAAUAAQAEAAUAAAAEAAYAAQAEAAYAAAAEAAcAAQAEAAcAAAAEAAgAAQAEAAgAAAAEAAkAAQAEAAkAAAAEAAoAAQAEAAoAAAAFAAAAAQAFAAAAAAAFAAEAAQAFAAEAAAAFAAIAAQAFAAIAAAAFAAMAAQAFAAMAAAAFAAQAAQAFAAQAAAAFAAUAAQAFAAUAAAAFAAYAAQAFAAYAAAAFAAcAAQAFAAcAAAAFAAgAAQAFAAgAAAAFAAkAAQAFAAkAAAAFAAoAAQAFAAoAAAAGAAAAAQAGAAAAAAAGAAEAAQAGAAEAAAAGAAIAAQAGAAIAAAAGAAMAAQAGAAMAAAAGAAQAAQAGAAQAAAAGAAUAAQAGAAUAAAAGAAYAAQAGAAYAAAAGAAcAAQAGAAcAAAAGAAgAAQAGAAgAAAAGAAkAAQAGAAkAAAAGAAoAAQAGAAoAAAAHAAAAAQAHAAAAAAAHAAEAAQAHAAEAAAAHAAIAAQAHAAIAAAAHAAMAAQAHAAMAAAAHAAQAAQAHAAQAAAAHAAUAAQAHAAUAAAAHAAYAAQAHAAYAAAAHAAcAAQAHAAcAAAAHAAgAAQAHAAgAAAAHAAkAAQAHAAkAAAAHAAoAAQAHAAoAAAAIAAAAAQAIAAAAAAAIAAEAAQAIAAEAAAAIAAIAAQAIAAIAAAAIAAMAAQAIAAMAAAAIAAQAAQAIAAQAAAAIAAUAAQAIAAUAAAAIAAYAAQAIAAYAAAAIAAcAAQAIAAcAAAAIAAgAAQAIAAgAAAAIAAkAAQAIAAkAAAAIAAoAAQAIAAoAAAAJAAAAAQAJAAAAAAAJAAEAAQAJAAEAAAAJAAIAAQAJAAIAAAAJAAMAAQAJAAMAAAAJAAQAAQAJAAQAAAAJAAUAAQAJAAUAAAAJAAYAAQAJAAYAAAAJAAcAAQAJAAcAAAAJAAgAAQAJAAgAAAAJAAkAAQAJAAkAAAAJAAoAAQAJAAoAAAAKAAAAAQAKAAAAAAAKAAEAAQAKAAEAAAAKAAIAAQAKAAIAAAAKAAMAAQAKAAMAAAAKAAQAAQAKAAQAAAAKAAUAAQAKAAUAAAAKAAYAAQAKAAYAAAAKAAcAAQAKAAcAAAAKAAgAAQAKAAgAAAAKAAkAAQAKAAkAAAAKAAoAAQAKAAoAAAALAAAAAQALAAAAAAALAAEAAQALAAEAAAALAAIAAQALAAIAAAALAAMAAQALAAMAAAALAAQAAQALAAQAAAALAAUAAQALAAUAAAALAAYAAQALAAYAAAALAAcAAQALAAcAAAALAAgAAQALAAgAAAALAAkAAQALAAkAAAALAAoAAQALAAoAAAAMAAAAAQAMAAAAAAAMAAEAAQAMAAEAAAAMAAIAAQAMAAIAAAAMAAMAAQAMAAMAAAAMAAQAAQAMAAQAAAAMAAUAAQAMAAUAAAAMAAYAAQAMAAYAAAAMAAcAAQAMAAcAAAAMAAgAAQAMAAgAAAAMAAkAAQAMAAkAAAAMAAoAAQAMAAoAAAANAAAAAQANAAAAAAANAAEAAQANAAEAAAANAAIAAQANAAIAAAANAAMAAQANAAMAAAANAAQAAQANAAQAAAANAAUAAQANAAUAAAANAAYAAQANAAYAAAANAAcAAQANAAcAAAANAAgAAQANAAgAAAANAAkAAQANAAkAAAANAAoAAQANAAoAAAAOAAAAAQAOAAAAAAAOAAEAAQAOAAEAAAAOAAIAAQAOAAIAAAAOAAMAAQAOAAMAAAAOAAQAAQAOAAQAAAAOAAUAAQAOAAUAAAAOAAYAAQAOAAYAAAAOAAcAAQAOAAcAAAAOAAgAAQAOAAgAAAAOAAkAAQAOAAkAAAAOAAoAAQAOAAoAAAAPAAAAAQAPAAAAAAAPAAEAAQAPAAEAAAAPAAIAAQAPAAIAAAAPAAMAAQAPAAMAAAAPAAQAAQAPAAQAAAAPAAUAAQAPAAUAAAAPAAYAAQAPAAYAAAAPAAcAAQAPAAcAAAAPAAgAAQAPAAgAAAAPAAkAAQAPAAkAAAAPAAoAAQAPAAoAAAAQAAAAAQAQAAAAAAAQAAEAAQAQAAEAAAAQAAIAAQAQAAIAAAAQAAMAAQAQAAMAAAAQAAQAAQAQAAQAAAAQAAUAAQAQAAUAAAAQAAYAAQAQAAYAAAAQAAcAAQAQAAcAAAAQAAgAAQAQAAgAAAAQAAkAAQAQAAkAAAAQAAoAAQAQAAoAAAARAAAAAQARAAAAAAARAAEAAQARAAEAAAARAAIAAQARAAIAAAARAAMAAQARAAMAAAARAAQAAQARAAQAAAARAAUAAQARAAUAAAARAAYAAQARAAYAAAARAAcAAQARAAcAAAARAAgAAQARAAgAAAARAAkAAQARAAkAAAARAAoAAQARAAoAAAASAAAAAQASAAAAAAASAAEAAQASAAEAAAASAAIAAQASAAIAAAASAAMAAQASAAMAAAASAAQAAQASAAQAAAASAAUAAQASAAUAAAASAAYAAQASAAYAAAASAAcAAQASAAcAAAASAAgAAQASAAgAAAASAAkAAQASAAkAAAASAAoAAQASAAoAAAATAAAAAQATAAAAAAATAAEAAQATAAEAAAATAAIAAQATAAIAAAATAAMAAQATAAMAAAATAAQAAQATAAQAAAATAAUAAQATAAUAAAATAAYAAQATAAYAAAATAAcAAQATAAcAAAATAAgAAQATAAgAAAATAAkAAQATAAkAAAATAAoAAQATAAoAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAMAAAAAAAQAAAAAAAQAAAAAAAUAAAAAAAUAAAAAAAYAAAAAAAYAAAAAAAcAAAAAAAcAAAAAAAgAAAAAAAgAAAAAAAkAAAAAAAkAAAAAAAoAAAAAAAoAAAABAAAAAAABAAAAAAABAAEAAAABAAEAAAABAAIAAAABAAIAAAABAAMAAAABAAMAAAABAAQAAAABAAQAAAABAAUAAAABAAUAAAABAAYAAAABAAYAAAABAAcAAAABAAcAAAABAAgAAAABAAgAAAABAAkAAAABAAkAAAABAAoAAAABAAoAAAACAAAAAAACAAAAAAACAAEAAAACAAEAAAACAAIAAAACAAIAAAACAAMAAAACAAMAAAACAAQAAAACAAQAAAACAAUAAAACAAUAAAACAAYAAAACAAYAAAACAAcAAAACAAcAAAACAAgAAAACAAgAAAACAAkAAAACAAkAAAACAAoAAAACAAoAAAADAAAAAAADAAAAAAADAAEAAAADAAEAAAADAAIAAAADAAIAAAADAAMAAAADAAMAAAADAAQAAAADAAQAAAADAAUAAAADAAUAAAADAAYAAAADAAYAAAADAAcAAAADAAcAAAADAAgAAAADAAgAAAADAAkAAAADAAkAAAADAAoAAAADAAoAAAAEAAAAAAAEAAAAAAAEAAEAAAAEAAEAAAAEAAIAAAAEAAIAAAAEAAMAAAAEAAMAAAAEAAQAAAAEAAQAAAAEAAUAAAAEAAUAAAAEAAYAAAAEAAYAAAAEAAcAAAAEAAcAAAAEAAgAAAAEAAgAAAAEAAkAAAAEAAkAAAAEAAoAAAAEAAoAAAAFAAAAAAAFAAAAAAAFAAEAAAAFAAEAAAAFAAIAAAAFAAIAAAAFAAMAAAAFAAMAAAAFAAQAAAAFAAQAAAAFAAUAAAAFAAUAAAAFAAYAAAAFAAYAAAAFAAcAAAAFAAcAAAAFAAgAAAAFAAgAAAAFAAkAAAAFAAkAAAAFAAoAAAAFAAoAAAAGAAAAAAAGAAAAAAAGAAEAAAAGAAEAAAAGAAIAAAAGAAIAAAAGAAMAAAAGAAMAAAAGAAQAAAAGAAQAAAAGAAUAAAAGAAUAAAAGAAYAAAAGAAYAAAAGAAcAAAAGAAcAAAAGAAgAAAAGAAgAAAAGAAkAAAAGAAkAAAAGAAoAAAAGAAoAAAAHAAAAAAAHAAAAAAAHAAEAAAAHAAEAAAAHAAIAAAAHAAIAAAAHAAMAAAAHAAMAAAAHAAQAAAAHAAQAAAAHAAUAAAAHAAUAAAAHAAYAAAAHAAYAAAAHAAcAAAAHAAcAAAAHAAgAAAAHAAgAAAAHAAkAAAAHAAkAAAAHAAoAAAAHAAoAAAAIAAAAAAAIAAAAAAAIAAEAAAAIAAEAAAAIAAIAAAAIAAIAAAAIAAMAAAAIAAMAAAAIAAQAAAAIAAQAAAAIAAUAAAAIAAUAAAAIAAYAAAAIAAYAAAAIAAcAAAAIAAcAAAAIAAgAAAAIAAgAAAAIAAkAAAAIAAkAAAAIAAoAAAAIAAoAAAAJAAAAAAAJAAAAAAAJAAEAAAAJAAEAAAAJAAIAAAAJAAIAAAAJAAMAAAAJAAMAAAAJAAQAAAAJAAQAAAAJAAUAAAAJAAUAAAAJAAYAAAAJAAYAAAAJAAcAAAAJAAcAAAAJAAgAAAAJAAgAAAAJAAkAAAAJAAkAAAAJAAoAAAAJAAoAAAAKAAAAAAAKAAAAAAAKAAEAAAAKAAEAAAAKAAIAAAAKAAIAAAAKAAMAAAAKAAMAAAAKAAQAAAAKAAQAAAAKAAUAAAAKAAUAAAAKAAYAAAAKAAYAAAAKAAcAAAAKAAcAAAAKAAgAAAAKAAgAAAAKAAkAAAAKAAkAAAAKAAoAAAAKAAoAAAALAAAAAAALAAAAAAALAAEAAAALAAEAAAALAAIAAAALAAIAAAALAAMAAAALAAMAAAALAAQAAAALAAQAAAALAAUAAAALAAUAAAALAAYAAAALAAYAAAALAAcAAAALAAcAAAALAAgAAAALAAgAAAALAAkAAAALAAkAAAALAAoAAAALAAoAAAAMAAAAAAAMAAAAAAAMAAEAAAAMAAEAAAAMAAIAAAAMAAIAAAAMAAMAAAAMAAMAAAAMAAQAAAAMAAQAAAAMAAUAAAAMAAUAAAAMAAYAAAAMAAYAAAAMAAcAAAAMAAcAAAAMAAgAAAAMAAgAAAAMAAkAAAAMAAkAAAAMAAoAAAAMAAoAAAANAAAAAAANAAAAAAANAAEAAAANAAEAAAANAAIAAAANAAIAAAANAAMAAAANAAMAAAANAAQAAAANAAQAAAANAAUAAAANAAUAAAANAAYAAAANAAYAAAANAAcAAAANAAcAAAANAAgAAAANAAgAAAANAAkAAAANAAkAAAANAAoAAAANAAoAAAAOAAAAAAAOAAAAAAAOAAEAAAAOAAEAAAAOAAIAAAAOAAIAAAAOAAMAAAAOAAMAAAAOAAQAAAAOAAQAAAAOAAUAAAAOAAUAAAAOAAYAAAAOAAYAAAAOAAcAAAAOAAcAAAAOAAgAAAAOAAgAAAAOAAkAAAAOAAkAAAAOAAoAAAAOAAoAAAAPAAAAAAAPAAAAAAAPAAEAAAAPAAEAAAAPAAIAAAAPAAIAAAAPAAMAAAAPAAMAAAAPAAQAAAAPAAQAAAAPAAUAAAAPAAUAAAAPAAYAAAAPAAYAAAAPAAcAAAAPAAcAAAAPAAgAAAAPAAgAAAAPAAkAAAAPAAkAAAAPAAoAAAAPAAoAAAAQAAAAAAAQAAAAAAAQAAEAAAAQAAEAAAAQAAIAAAAQAAIAAAAQAAMAAAAQAAMAAAAQAAQAAAAQAAQAAAAQAAUAAAAQAAUAAAAQAAYAAAAQAAYAAAAQAAcAAAAQAAcAAAAQAAgAAAAQAAgAAAAQAAkAAAAQAAkAAAAQAAoAAAAQAAoAAAARAAAAAAARAAAAAAARAAEAAAARAAEAAAARAAIAAAARAAIAAAARAAMAAAARAAMAAAARAAQAAAARAAQAAAARAAUAAAARAAUAAAARAAYAAAARAAYAAAARAAcAAAARAAcAAAARAAgAAAARAAgAAAARAAkAAAARAAkAAAARAAoAAAARAAoAAAASAAAAAAASAAAAAAASAAEAAAASAAEAAAASAAIAAAASAAIAAAASAAMAAAASAAMAAAASAAQAAAASAAQAAAASAAUAAAASAAUAAAASAAYAAAASAAYAAAASAAcAAAASAAcAAAASAAgAAAASAAgAAAASAAkAAAASAAkAAAASAAoAAAASAAoAAAATAAAAAAATAAAAAAATAAEAAAATAAEAAAATAAIAAAATAAIAAAATAAMAAAATAAMAAAATAAQAAAATAAQAAAATAAUAAAATAAUAAAATAAYAAAATAAYAAAATAAcAAAATAAcAAAATAAgAAAATAAgAAAATAAkAAAATAAkAAAATAAoAAAATAAoAAAA=")
 tile_set = SubResource("TileSet_uj04i")
+
+[node name="ingredients" parent="cooking_station" unique_id=2072510880 instance=ExtResource("12_7uyog")]
+
+[node name="basket" type="Area2D" parent="cooking_station" unique_id=1704460958]
+position = Vector2(82, 115)
+script = ExtResource("14_7uyog")
+
+[node name="Sprite2D" type="Sprite2D" parent="cooking_station/basket" unique_id=246341854]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("14_xdgdu")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="Sprite2D2" type="Sprite2D" parent="cooking_station/basket" unique_id=2061566570]
+z_index = 2
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("14_xdgdu")
+region_enabled = true
+region_rect = Rect2(0, 64, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cooking_station/basket" unique_id=1370853426]
+position = Vector2(-0.5, 19.5)
+shape = SubResource("RectangleShape2D_7uyog")
+
+[node name="Marker1" type="Marker2D" parent="cooking_station/basket" unique_id=1725057149]
+position = Vector2(-1, 16)
+
+[node name="Marker2" type="Marker2D" parent="cooking_station/basket" unique_id=1250665094]
+position = Vector2(-14, 15)
+
+[node name="Marker3" type="Marker2D" parent="cooking_station/basket" unique_id=1947988903]
+position = Vector2(12, 15)
+
+[node name="Marker4" type="Marker2D" parent="cooking_station/basket" unique_id=1451569118]
+position = Vector2(-24, 11)
+
+[node name="Marker5" type="Marker2D" parent="cooking_station/basket" unique_id=191897850]
+position = Vector2(23, 10)
+
+[node name="Marker6" type="Marker2D" parent="cooking_station/basket" unique_id=224671011]
+position = Vector2(-9, 9)
+
+[node name="pan" type="Area2D" parent="cooking_station" unique_id=2043776529]
+position = Vector2(213, 132)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("15_ta4r8")
+
+[node name="Sprite2D" type="Sprite2D" parent="cooking_station/pan" unique_id=1410135804]
+texture = ExtResource("16_coixn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cooking_station/pan" unique_id=1608755228]
+position = Vector2(0, -8.75)
+shape = SubResource("RectangleShape2D_p5viw")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="cooking_station/pan" unique_id=1654872558]
+process_material = SubResource("ParticleProcessMaterial_w2dd0")
+script = ExtResource("17_ftasa")
+
+[node name="droplets" type="Sprite2D" parent="cooking_station/pan" unique_id=236975681]
+
+[node name="condiments" parent="cooking_station" unique_id=1326736296 instance=ExtResource("17_coixn")]
+
+[node name="condiment markers" type="Node2D" parent="cooking_station" unique_id=145889753]
+
+[node name="Marker1" type="Marker2D" parent="cooking_station/condiment markers" unique_id=1303432057]
+position = Vector2(324, 125)
+
+[node name="Marker2" type="Marker2D" parent="cooking_station/condiment markers" unique_id=1329600632]
+position = Vector2(346, 125)
+
+[node name="Marker3" type="Marker2D" parent="cooking_station/condiment markers" unique_id=1615796579]
+position = Vector2(356, 125)
+
+[node name="Marker4" type="Marker2D" parent="cooking_station/condiment markers" unique_id=1385894485]
+position = Vector2(324, 141)
+
+[node name="Marker5" type="Marker2D" parent="cooking_station/condiment markers" unique_id=2116937491]
+position = Vector2(340, 141)
+
+[node name="Marker6" type="Marker2D" parent="cooking_station/condiment markers" unique_id=803150479]
+position = Vector2(356, 141)
+
+[node name="ingredient_store" type="VBoxContainer" parent="cooking_station" unique_id=490660118]
+offset_left = 334.0
+offset_top = 166.0
+offset_right = 477.0
+offset_bottom = 268.0
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="cooking_station/ingredient_store" unique_id=893753006]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_7h7mn")
+text = "Ingredients"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="cooking_station/ingredient_store" unique_id=624736354]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="cooking_station/ingredient_store/HBoxContainer" unique_id=58993760]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Name"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="cooking_station/ingredient_store/HBoxContainer" unique_id=1726565292]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Amount"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="cooking_station/ingredient_store" unique_id=1267643590]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="cooking_station/ingredient_store/HBoxContainer2" unique_id=1117756023]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Artichoke" type="HBoxContainer" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer" unique_id=1922572054]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Artichoke" unique_id=2106046920]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Artichoke"
+
+[node name="Button" type="Button" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Artichoke" unique_id=905358041]
+custom_maximum_size = Vector2(14, 14)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 10
+text = "-"
+script = ExtResource("19_w2dd0")
+
+[node name="Label2" type="Label" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Artichoke" unique_id=212743712]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "0"
+
+[node name="Button2" type="Button" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Artichoke" unique_id=748025607]
+custom_maximum_size = Vector2(14, 14)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 10
+text = "+"
+
+[node name="Asparagus" type="HBoxContainer" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer" unique_id=1437089425]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Asparagus" unique_id=578504055]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Cabbage"
+
+[node name="Button" type="Button" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Asparagus" unique_id=145831096]
+custom_maximum_size = Vector2(14, 14)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 10
+text = "-"
+script = ExtResource("19_w2dd0")
+
+[node name="Label2" type="Label" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Asparagus" unique_id=2035268547]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "0"
+
+[node name="Button2" type="Button" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Asparagus" unique_id=1500748804]
+custom_maximum_size = Vector2(14, 14)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 10
+text = "+"
+
+[node name="Bell Pepper" type="HBoxContainer" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer" unique_id=1327361599]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Bell Pepper" unique_id=1310115396]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Bell Pepper"
+
+[node name="Button" type="Button" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Bell Pepper" unique_id=2122231135]
+custom_maximum_size = Vector2(14, 14)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 10
+text = "-"
+script = ExtResource("19_w2dd0")
+
+[node name="Label2" type="Label" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Bell Pepper" unique_id=1866860805]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "0"
+
+[node name="Button2" type="Button" parent="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Bell Pepper" unique_id=1562229849]
+custom_maximum_size = Vector2(14, 14)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 10
+text = "+"
+
+[node name="Button" type="Button" parent="cooking_station/ingredient_store" unique_id=2113169454]
+material = SubResource("CanvasItemMaterial_w2dd0")
+custom_maximum_size = Vector2(-1, 14)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "generate"
 
 [node name="transtion_canvas" type="CanvasLayer" parent="." unique_id=686737789]
 
@@ -2684,10 +3011,8 @@ tile_set = SubResource("TileSet_uj04i")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -2695,6 +3020,22 @@ color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="transtion_canvas" unique_id=1875521379]
 libraries/ = SubResource("AnimationLibrary_sgfxa")
+
+[node name="resource_dictionary" type="Node2D" parent="." unique_id=297002955]
+script = ExtResource("15_sgfxa")
+
+[node name="sample_finish" type="Sprite2D" parent="." unique_id=1415123831]
+position = Vector2(213, 118)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("21_jxk5e")
+
+[node name="flash" type="ColorRect" parent="." unique_id=1443701523]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 83.0
+offset_right = 258.0
+offset_bottom = 170.0
+color = Color(1, 1, 1, 0)
 
 [connection signal="pressed" from="CanvasLayer/Panel/Button" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Settings Button/Button" to="." method="_on_language_pressed"]
@@ -2704,3 +3045,14 @@ libraries/ = SubResource("AnimationLibrary_sgfxa")
 [connection signal="toggled" from="CanvasLayer/Panel/Language panel/VBoxContainer/englishBtn" to="." method="_on_english_btn_toggled"]
 [connection signal="pressed" from="CanvasLayer/Panel/Sound Panel/buttonContainer/Button2" to="." method="_on_soundBack_pressed"]
 [connection signal="pressed" from="kitchen/Button" to="kitchen/CharacterBody2D" method="_on_button_pressed"]
+[connection signal="area_entered" from="cooking_station/basket" to="cooking_station/basket" method="_on_area_entered"]
+[connection signal="area_exited" from="cooking_station/basket" to="cooking_station/basket" method="_on_area_exited"]
+[connection signal="area_entered" from="cooking_station/pan" to="cooking_station/pan" method="_on_area_entered"]
+[connection signal="area_exited" from="cooking_station/pan" to="cooking_station/pan" method="_on_area_exited"]
+[connection signal="pressed" from="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Artichoke/Button" to="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Artichoke/Button" method="_on_pressed"]
+[connection signal="pressed" from="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Artichoke/Button2" to="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Artichoke/Button" method="_on_button_2_pressed"]
+[connection signal="pressed" from="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Asparagus/Button" to="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Asparagus/Button" method="_on_pressed"]
+[connection signal="pressed" from="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Asparagus/Button2" to="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Asparagus/Button" method="_on_button_2_pressed"]
+[connection signal="pressed" from="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Bell Pepper/Button" to="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Bell Pepper/Button" method="_on_pressed"]
+[connection signal="pressed" from="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Bell Pepper/Button2" to="cooking_station/ingredient_store/HBoxContainer2/VBoxContainer/Bell Pepper/Button" method="_on_button_2_pressed"]
+[connection signal="pressed" from="cooking_station/ingredient_store/Button" to="cooking_station/basket" method="_on_button_pressed"]

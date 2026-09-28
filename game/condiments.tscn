@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://wh2mqe2d0a1h"]
+
+[ext_resource type="Script" uid="uid://xanmrijmu272" path="res://condiments.gd" id="1_pniwv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2dd0"]
+size = Vector2(20, 29)
+
+[node name="condiments" type="Area2D" unique_id=1326736296]
+script = ExtResource("1_pniwv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1958835044]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1759931552]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_w2dd0")
