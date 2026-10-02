@@ -13,7 +13,11 @@ config_version=5
 config/name="game"
 run/main_scene="uid://bfd2udyj5loxq"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+
+[autoload]
+
+BasketManager="*uid://btttei3k1plv7"
+GameData="*uid://bmdoxpmmj5v13"
 
 [display]
 

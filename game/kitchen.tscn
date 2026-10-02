@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://q8d8nou1ffh7"]
 
-[ext_resource type="Texture2D" uid="uid://c1pkyyna80t8g" path="res://kitchen/kitchen.png" id="1_ipk1y"]
-[ext_resource type="Texture2D" uid="uid://cl3x1sg1xs8vj" path="res://kitchen/assets 2.png" id="2_xsyy8"]
-[ext_resource type="Texture2D" uid="uid://dia38nbnsfw2g" path="res://kitchen/gppHxF.png" id="3_xsyy8"]
+[ext_resource type="Texture2D" uid="uid://c1pkyyna80t8g" path="res://res/kitchen/kitchen.png" id="1_ipk1y"]
+[ext_resource type="Texture2D" uid="uid://cl3x1sg1xs8vj" path="res://res/kitchen/assets 2.png" id="2_xsyy8"]
+[ext_resource type="Texture2D" path="res://kitchen/gppHxF.png" id="3_xsyy8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdutl"]
 texture = ExtResource("2_xsyy8")

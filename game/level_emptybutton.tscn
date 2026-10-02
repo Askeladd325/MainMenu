@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b1b8a4ywktcru"]
+
+[ext_resource type="Texture2D" uid="uid://sw7863raqpd1" path="res://Assets/Button.png" id="1_hpown"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtfvi"]
+atlas = ExtResource("1_hpown")
+region = Rect2(173, 433, 425, 189)
+
+[node name="LevelButton" type="TextureButton" unique_id=1385751199]
+anchors_preset = -1
+anchor_left = 0.16700001
+anchor_top = 0.106000006
+anchor_right = 0.36
+anchor_bottom = 0.20500001
+offset_left = -0.38401794
+offset_top = 0.31199646
+offset_right = 0.27996826
+offset_bottom = 0.1599884
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_xtfvi")
+ignore_texture_size = true
+stretch_mode = 0
