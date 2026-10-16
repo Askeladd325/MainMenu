@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://btmix32ocp5ad"]
+
+[ext_resource type="Script" uid="uid://7i6mkb5b1617" path="res://minigames.gd" id="1_qvv0w"]
+[ext_resource type="Script" uid="uid://dcwmefmv5njte" path="res://meter.gd" id="2_85wpm"]
+[ext_resource type="Texture2D" uid="uid://b1ba4krxbs6nl" path="res://knob.png" id="3_7p7jg"]
+[ext_resource type="Texture2D" uid="uid://uilnojlgin0l" path="res://knobv2.png" id="4_7p7jg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ux08"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9474905, 0.39550027, 0.12518704, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpupq"]
+bg_color = Color(0.49019608, 0.43529412, 0.4, 1)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9490196, 0.39607844, 0.1254902, 1)
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p7jg"]
+bg_color = Color(0.13333334, 0.85882354, 0.30588236, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Minigames" type="Control" unique_id=1634454915]
+visibility_layer = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qvv0w")
+metadata/_edit_horizontal_guides_ = [272.0]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=92930367]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.38431373)
+
+[node name="Pop-up Window" type="Panel" parent="." unique_id=2049141345]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -118.0
+offset_right = 125.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ux08")
+
+[node name="Label" type="Label" parent="Pop-up Window" unique_id=2045944266]
+z_index = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 231.0
+offset_right = 150.0
+offset_bottom = 254.0
+grow_horizontal = 2
+text = "Set the stove's heat level!"
+horizontal_alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Pop-up Window" unique_id=1954122589]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -83.0
+offset_right = 123.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Pop-up Window/SubViewportContainer" unique_id=2023884455]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(246, 166)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="Pop-up Window/SubViewportContainer/SubViewport" unique_id=40151910]
+position = Vector2(117, 113)
+
+[node name="stove_minigame" type="Panel" parent="Pop-up Window" unique_id=509346442]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -2.0
+offset_right = 35.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vpupq")
+
+[node name="Meter" type="Node2D" parent="Pop-up Window/stove_minigame" unique_id=1583422548]
+position = Vector2(27, 37)
+scale = Vector2(1.65, 1.65)
+script = ExtResource("2_85wpm")
+
+[node name="Meter" type="Sprite2D" parent="Pop-up Window/stove_minigame/Meter" unique_id=23853152]
+position = Vector2(8, -5)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("3_7p7jg")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="hand_pivot" type="Node2D" parent="Pop-up Window/stove_minigame/Meter" unique_id=1010265186]
+
+[node name="knob" type="Sprite2D" parent="Pop-up Window/stove_minigame/Meter/hand_pivot" unique_id=348895877]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_7p7jg")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Button" type="Button" parent="Pop-up Window" unique_id=1968507882]
+layout_mode = 0
+offset_top = 176.0
+offset_right = 8.0
+offset_bottom = 184.0
+text = "restart"
+
+[node name="stir_progress" type="ProgressBar" parent="Pop-up Window" unique_id=993638319]
+layout_mode = 0
+offset_top = -8.0
+offset_right = 252.0
+offset_bottom = 19.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_7p7jg")
+
+[connection signal="pressed" from="Pop-up Window/Button" to="Pop-up Window/stove_minigame/Meter" method="_on_button_pressed"]
