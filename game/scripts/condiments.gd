@@ -4,6 +4,8 @@ extends Area2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var particle: GPUParticles2D = get_tree().current_scene.get_node("cooking_station/pan/GPUParticles2D")
+@onready var guide_canvas: CanvasLayer = get_tree().current_scene.get_node("user_interface/guide_canvas")
+@onready var hint: Label = get_tree().current_scene.get_node("user_interface/hint")
 
 var dragging := false
 var drag_offset := Vector2.ZERO
@@ -25,6 +27,10 @@ func set_condiment(name: String, image: Texture2D):
 	collision.shape = shape
 
 func _input(event):
+	if guide_canvas.is_completing_guide_animation:
+		return
+	if guide_canvas.condiment_guide_locked:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -44,13 +50,22 @@ func _input(event):
 				dragging = false
 				currently_dragging = null
 				if inside_pan:
-					pan.condiment_to_pan(self)
-					await pan.condiment_to_pan_animation()
-					
-					self.global_position = original_position
+					for section in guide_canvas.guide_requirements:
+						if guide_canvas.guide_requirements[section].has(condiment_name):
+							var task = guide_canvas.guide_tasks[section][condiment_name]
+							task.modulate = Color.GREEN
+							task.text = task.text.replace("☐", "☑")
+							hint.visible = false
+							pan.condiment_to_pan(self)
+							await pan.condiment_to_pan_animation()
+							guide_canvas.guide_complete(section)
+						else:
+							hint.visible = true
+							hint.text = "Follow the Guide!"
 					self.rotation = 0
 					particle.emitting = false
 					
+				self.global_position = original_position
 	if event is InputEventMouseMotion:
 		if dragging:
 			global_position = get_global_mouse_position() + drag_offset

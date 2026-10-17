@@ -4,7 +4,7 @@ extends Area2D
 @onready var dictionary: Node2D = $"../../resource_dictionary"
 @onready var markers = basket.get_children().filter(func(node): return node is Marker2D)
 
-const ingredient_scene = preload("res://ingredients.tscn")
+const ingredient_scene = preload("res://res/scenes/ingredients.tscn")
 
 var created_ingredients: Array[Area2D] = []
 

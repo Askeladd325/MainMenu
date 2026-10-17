@@ -67,8 +67,6 @@ func start_meter() -> void:
 func stop_meter() -> void:
 	is_stopped = true
 
-	print("Stopped at angle: ", current_angle)
-
 	if current_angle >= -20 and current_angle <= 20:
 		print("white")
 		set_fire_strength("Low")

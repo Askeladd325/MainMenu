@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dgix1we63obxv" path="res://res/main_menu/pinggang pinoy background.jpg" id="1_2fv1l"]
 [ext_resource type="Script" uid="uid://nqflkmu3kfpx" path="res://scripts/settings.gd" id="1_mx4kw"]
-[ext_resource type="PackedScene" uid="uid://btmix32ocp5ad" path="res://minigames.tscn" id="2_i7obx"]
+[ext_resource type="PackedScene" uid="uid://btmix32ocp5ad" path="res://res/scenes/minigames.tscn" id="2_i7obx"]
 [ext_resource type="FontFile" uid="uid://cbbjo6vox2o3k" path="res://res/font/CHICKEN Pie.ttf" id="2_mx4kw"]
 [ext_resource type="ButtonGroup" uid="uid://cl4lij268rdyc" path="res://languageBtnGroup.tres" id="4_37a8j"]
 [ext_resource type="Texture2D" uid="uid://blf4gh4hnqrw7" path="res://res/kitchen/tiles v1 (13).png" id="5_blqn1"]

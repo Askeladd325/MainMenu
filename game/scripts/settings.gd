@@ -13,19 +13,18 @@ extends Control
 @onready var dictionary: Node2D = $resource_dictionary
 @onready var condiment_markers: Node2D = $"cooking_station/condiment markers"
 @onready var markers = condiment_markers.get_children().filter(func(node): return node is Marker2D)
-@onready var main: Node2D = $Main
-@onready var parallax_layer: ParallaxLayer = $Main/Environment/CloudsBackground/ParallaxLayer
-@onready var basket_icon: TextureButton = $"Main/UI Manager/BasketIcon"
+@onready var guide_canvas: CanvasLayer = $user_interface/guide_canvas
+@onready var minigames: Control = $minigames_canvas/Minigames
+@onready var base: GPUParticles2D = $cooking_station/background/base
 
-const condiment_scene = preload("res://condiments.tscn")
+const condiment_scene = preload("res://res/scenes/condiments.tscn")
 
 func _ready() -> void:
 	language_panel.visible = false;
 	sound_panel.visible = false;
 	kitchen.visible = false;
-	cooking_station.visible = false;
+	cooking_station.visible = true;
 	joystick_canvas.visible = false;
-	#set_visibility_recursive(main, false)
 	
 	var slot := 0
 	
@@ -38,13 +37,10 @@ func _ready() -> void:
 		
 		slot += 1
 
-func set_visibility_recursive(node: Node, value: bool) -> void:
-	for child in node.get_children():
-		if child is CanvasItem:
-			child.visible = value
+func zoom_to_point(camera: Camera2D, point: Vector2, zoom_value: float) -> void:
+	camera.global_position = point
+	camera.zoom = Vector2(zoom_value, zoom_value)
 
-		set_visibility_recursive(child, value)
-		
 func _on_language_pressed() -> void:
 	language_panel.visible = true;
 	settings_button.visible = false;
@@ -80,3 +76,8 @@ func _on_play_pressed() -> void:
 	panel.visible = false;
 	joystick_canvas.visible = true;
 	kitchen.visible = true;
+
+func _on_texture_button_pressed() -> void:
+	if base.emitting:
+		return
+	minigames.visible = true

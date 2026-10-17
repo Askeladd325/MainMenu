@@ -31,7 +31,6 @@ func ingredient_to_pan_animation():
 	current_ingredient.position = Vector2(0, -48 -current_stack_offset * stack_spacing)
 	current_ingredient.rotation = 0
 	current_ingredient.scale = Vector2(0.5, 0.5)
-	print(current_ingredient.ingredient_name)
 	var tween = create_tween()
 	tween.set_parallel(true)
 	
