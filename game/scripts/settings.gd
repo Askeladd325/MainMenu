@@ -16,6 +16,7 @@ extends Control
 @onready var guide_canvas: CanvasLayer = $user_interface/guide_canvas
 @onready var minigames: Control = $minigames_canvas/Minigames
 @onready var base: GPUParticles2D = $cooking_station/background/base
+@onready var authmenu: Control = $authmenu
 
 const condiment_scene = preload("res://res/scenes/condiments.tscn")
 
@@ -23,8 +24,9 @@ func _ready() -> void:
 	language_panel.visible = false;
 	sound_panel.visible = false;
 	kitchen.visible = false;
-	cooking_station.visible = true;
+	cooking_station.visible = false;
 	joystick_canvas.visible = false;
+	#authmenu.visible = true
 	
 	var slot := 0
 	

@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://iyinv5jegmyw"]
+
+[ext_resource type="Script" uid="uid://fecwb3objjpx" path="res://authmenu.gd" id="1_80m6l"]
+[ext_resource type="Shader" uid="uid://dlt7iso3hpytb" path="res://new_shader.gdshader" id="1_e25ej"]
+[ext_resource type="Texture2D" uid="uid://7nabcbej86ks" path="res://background/Copy of Bg.png" id="2_tyn36"]
+[ext_resource type="Script" uid="uid://c2jqerqv6nn0v" path="res://guest.gd" id="3_tyn36"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s4riv"]
+shader = ExtResource("1_e25ej")
+shader_parameter/blur_amount = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7vvk"]
+bg_color = Color(0.9647059, 0.9843137, 0.9607843, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4riv"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85y3i"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e25ej"]
+bg_color = Color(0.23137255, 0.50980395, 0.9647059, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btaim"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tced2"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="authmenu" type="Control" unique_id=1982618175]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_80m6l")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1163742507]
+material = SubResource("ShaderMaterial_s4riv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tyn36")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="." unique_id=1530315236]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -86.5
+offset_right = 134.0
+offset_bottom = 86.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h7vvk")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1692034676]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 23
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=2106352262]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1608024869]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Welcome Back, Chef!"
+
+[node name="email" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer" unique_id=349417774]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_s4riv")
+placeholder_text = "Email"
+
+[node name="pass" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer" unique_id=1079388389]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_85y3i")
+placeholder_text = "Password"
+
+[node name="submit" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=253324851]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_e25ej")
+text = "Login"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=488649850]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="sign up" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=834513627]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_btaim")
+text = "Sign up"
+
+[node name="guest" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1820183311]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_tced2")
+text = "Login as Guest"
+script = ExtResource("3_tyn36")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1176280463]
+
+[node name="ErrorDialog" type="AcceptDialog" parent="." unique_id=1119581104]
+title = "Error"
+dialog_text = "An error occured."
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/guest" to="Panel/MarginContainer/VBoxContainer/HBoxContainer/guest" method="_on_pressed"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dgix1we63obxv" path="res://res/main_menu/pinggang pinoy background.jpg" id="1_2fv1l"]
 [ext_resource type="Script" uid="uid://nqflkmu3kfpx" path="res://scripts/settings.gd" id="1_mx4kw"]
+[ext_resource type="PackedScene" uid="uid://iyinv5jegmyw" path="res://res/scenes/authmenu.tscn" id="2_4cy0l"]
 [ext_resource type="PackedScene" uid="uid://btmix32ocp5ad" path="res://res/scenes/minigames.tscn" id="2_i7obx"]
 [ext_resource type="FontFile" uid="uid://cbbjo6vox2o3k" path="res://res/font/CHICKEN Pie.ttf" id="2_mx4kw"]
 [ext_resource type="ButtonGroup" uid="uid://cl4lij268rdyc" path="res://languageBtnGroup.tres" id="4_37a8j"]
@@ -2304,6 +2305,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_mx4kw")
+
+[node name="authmenu" parent="." unique_id=1982618175 instance=ExtResource("2_4cy0l")]
+layout_mode = 1
+script = null
 
 [node name="minigames_canvas" type="CanvasLayer" parent="." unique_id=2088735440]
 layer = 2
