@@ -15,7 +15,7 @@ func _ready() -> void:
 func check_connection() -> void:
 	_http_request.cancel_request()
 	
-	var err = _http_request.request("https://1.1.1.1")
+	var err = _http_request.request("http://1.1.1.1")
 	if err != OK:
 		_set_online(false)
 

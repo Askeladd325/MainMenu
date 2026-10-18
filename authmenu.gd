@@ -3,7 +3,9 @@ extends Control
 enum Mode { SIGN_IN, SIGN_UP }
 var current_mode: Mode = Mode.SIGN_IN
 
-const FIREBASE_API_KEY: String = "AIzaSyAW7iwWwVLejpb_KJN_k7F2MOfZQNQFwr0"
+# 👉 PASTE YOUR SUPABASE DETAILS HERE 👈
+const SUPABASE_URL: String = "https://sgudgjdlynzryhneiftk.supabase.co"       # e.g., "https://xyz.supabase.co"
+const SUPABASE_ANON_KEY: String = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNndWRnamRseW56cnlobmVpZnRrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIzMzA3NjMsImV4cCI6MjEwNzkwNjc2M30.vmpNsNX3mtU0_zhBvrCvvUg7lAAoE8_6nzW1wjAmbLI"     # Your long public anon key string
 
 @onready var title_label: Label = $Panel/MarginContainer/VBoxContainer/Label
 @onready var email_input: LineEdit = $Panel/MarginContainer/VBoxContainer/email
@@ -25,7 +27,6 @@ func _ready() -> void:
 	http_request.request_completed.connect(_on_request_completed)
 	
 	NetworkManager.connection_status_changed.connect(_on_network_status_changed)
-	
 	NetworkManager.check_connection()
 	
 func _on_network_status_changed(is_online: bool) -> void:
@@ -56,46 +57,42 @@ func _on_submit_button_pressed() -> void:
 	
 	var url: String = ""
 	if current_mode == Mode.SIGN_UP:
-		url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + FIREBASE_API_KEY
+		url = SUPABASE_URL + "/auth/v1/signup"
 	else:
-		url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + FIREBASE_API_KEY
+		url = SUPABASE_URL + "/auth/v1/token?grant_type=password"
 
 	var payload = JSON.stringify({
 		"email": email,
-		"password": password,
-		"returnSecureToken": true
+		"password": password
 	})
 	
-	var headers = ["Content-Type: application/json"]
+	var headers = [
+		"Content-Type: application/json",
+		"apikey: " + SUPABASE_ANON_KEY
+	]
+	
 	http_request.request(url, headers, HTTPClient.METHOD_POST, payload)
 
 func _on_request_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	submit_button.disabled = false
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	
-	if response_code == 200:
-		var user_id = response.get("localId", "")
-		var id_token = response.get("idToken", "")
-		print("Authentication Successful! User ID: ", user_id)
-		
+	# Supabase returns 200 or 201 on success
+	if response_code == 200 or response_code == 201:
+		print("Supabase Authentication Successful!")
 		get_tree().change_scene_to_file("res://node_2d.tscn")
 	else:
-		var error_data = response.get("error", {})
-		var firebase_msg: String = error_data.get("message", "UNKNOWN_ERROR")
-		
-		match firebase_msg:
-			"EMAIL_NOT_FOUND":
-				show_error_popup("No account exists with this email address. Please sign up first!")
-			"INVALID_PASSWORD", "INVALID_LOGIN_CREDENTIALS":
-				show_error_popup("Incorrect email or password. Please try again.")
-			"EMAIL_EXISTS":
-				show_error_popup("An account with this email already exists.")
-			"INVALID_EMAIL":
-				show_error_popup("Please enter a valid email address.")
-			"WEAK_PASSWORD : Password should be at least 6 characters":
-				show_error_popup("Password must be at least 6 characters long.")
-			_:
-				show_error_popup("Authentication failed: " + firebase_msg)
+		# Extract error message cleanly from Supabase's error response structure
+		var error_msg: String = "Unknown error occurred."
+		if response:
+			if response.has("msg"):
+				error_msg = response.get("msg")
+			elif response.has("error_description"):
+				error_msg = response.get("error_description")
+			elif response.has("message"):
+				error_msg = response.get("message")
+				
+		show_error_popup("Authentication failed: " + error_msg)
 
 func _on_guest_button_pressed() -> void:
 	print("Proceeding in Guest/Offline mode...")
