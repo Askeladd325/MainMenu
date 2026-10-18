@@ -26,7 +26,7 @@ func _ready() -> void:
 	kitchen.visible = false;
 	cooking_station.visible = false;
 	joystick_canvas.visible = false;
-	#authmenu.visible = true
+	authmenu.visible = true
 	
 	var slot := 0
 	

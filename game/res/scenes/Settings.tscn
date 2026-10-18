@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://iyinv5jegmyw" path="res://res/scenes/authmenu.tscn" id="2_4cy0l"]
 [ext_resource type="PackedScene" uid="uid://btmix32ocp5ad" path="res://res/scenes/minigames.tscn" id="2_i7obx"]
 [ext_resource type="FontFile" uid="uid://cbbjo6vox2o3k" path="res://res/font/CHICKEN Pie.ttf" id="2_mx4kw"]
+[ext_resource type="PackedScene" uid="uid://4pqund3nukl7" path="res://res/scenes/node_2d.tscn" id="3_4cy0l"]
 [ext_resource type="ButtonGroup" uid="uid://cl4lij268rdyc" path="res://languageBtnGroup.tres" id="4_37a8j"]
 [ext_resource type="Texture2D" uid="uid://blf4gh4hnqrw7" path="res://res/kitchen/tiles v1 (13).png" id="5_blqn1"]
 [ext_resource type="Texture2D" uid="uid://cl3x1sg1xs8vj" path="res://res/kitchen/assets 2.png" id="6_j7x76"]
@@ -2309,6 +2310,10 @@ script = ExtResource("1_mx4kw")
 [node name="authmenu" parent="." unique_id=1982618175 instance=ExtResource("2_4cy0l")]
 layout_mode = 1
 script = null
+
+[node name="Main_Menu" parent="." unique_id=1728770090 instance=ExtResource("3_4cy0l")]
+visible = false
+layout_mode = 1
 
 [node name="minigames_canvas" type="CanvasLayer" parent="." unique_id=2088735440]
 layer = 2
