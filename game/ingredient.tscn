@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dk0m336x2pmi3"]
+
+[ext_resource type="Texture2D" uid="uid://duu8ysxrp65w" path="res://ingredients/poultry_01.png" id="1_veaxr"]
+[ext_resource type="Script" uid="uid://beskleavx48wt" path="res://drag_area.gd" id="2_veaxr"]
+[ext_resource type="Texture2D" uid="uid://dot5f8cg4h5ix" path="res://sink/dirt.png" id="4_veaxr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ali5p"]
+radius = 47.0
+
+[sub_resource type="Animation" id="Animation_ali5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IngredientSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.08726646]
+}
+
+[sub_resource type="Animation" id="Animation_qaeiw"]
+resource_name = "was_chicken"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IngredientSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.08726646, 0.08726646, -0.08726646]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bnp4x"]
+_data = {
+&"RESET": SubResource("Animation_ali5p"),
+&"was_chicken": SubResource("Animation_qaeiw")
+}
+
+[node name="Ingredient" type="Node2D" unique_id=400921387]
+scale = Vector2(1.0235234, 1.0002533)
+
+[node name="IngredientSprite" type="Sprite2D" parent="." unique_id=649083374]
+texture_filter = 1
+position = Vector2(360.51926, 182.95364)
+rotation = -0.08726646
+scale = Vector2(3.25, 2.685252)
+texture = ExtResource("1_veaxr")
+
+[node name="DragArea" type="Area2D" parent="IngredientSprite" unique_id=592151518]
+position = Vector2(-302.76926, -213.01541)
+scale = Vector2(0.30769232, 0.37240455)
+script = ExtResource("2_veaxr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IngredientSprite/DragArea" unique_id=146077826]
+position = Vector2(982.2279, 569.83795)
+shape = SubResource("CircleShape2D_ali5p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2102450810]
+libraries/ = SubResource("AnimationLibrary_bnp4x")
+
+[node name="Dirt" type="Node2D" parent="." unique_id=1259833926]
+
+[node name="DirtSpot1" type="Sprite2D" parent="Dirt" unique_id=1442802832]
+position = Vector2(377.70663, 174.95566)
+scale = Vector2(0.05581553, 0.06800523)
+texture = ExtResource("4_veaxr")
+
+[node name="DirtSpot2" type="Sprite2D" parent="Dirt" unique_id=860428719]
+position = Vector2(335.89438, 190.37253)
+scale = Vector2(0.05581553, 0.06800523)
+texture = ExtResource("4_veaxr")
+
+[node name="DirtSpot3" type="Sprite2D" parent="Dirt" unique_id=902857026]
+position = Vector2(359.34286, 201.36972)
+scale = Vector2(0.05581553, 0.06800523)
+texture = ExtResource("4_veaxr")
+
+[node name="DirtSpot4" type="Sprite2D" parent="Dirt" unique_id=760415345]
+position = Vector2(356.41183, 170.3776)
+scale = Vector2(0.05581553, 0.06800523)
+texture = ExtResource("4_veaxr")

@@ -1,0 +1,666 @@
+[gd_scene format=3 uid="uid://dh70f5h7yt8jd"]
+
+[ext_resource type="Script" uid="uid://bmvyec0ve8ilm" path="res://wash_station.gd" id="1_ali5p"]
+[ext_resource type="Texture2D" uid="uid://br33oo2icjtpl" path="res://sink/final na talaga.png" id="2_bnp4x"]
+[ext_resource type="PackedScene" uid="uid://dk0m336x2pmi3" path="res://ingredient.tscn" id="3_06oei"]
+[ext_resource type="PackedScene" uid="uid://bxelkgaxholi1" path="res://potato.tscn" id="4_ali5p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
+size = Vector2(217.8989, 68.00001)
+
+[sub_resource type="Animation" id="Animation_yd5gq"]
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaterDrop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(361, 166)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WaterDrop:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WaterDrop2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(363, 166)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WaterDrop2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WaterDrop3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(365, 166)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WaterDrop3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WaterDrop4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(379, 166)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WaterDrop4:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WaterDrop5:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(372, 166)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WaterDrop5:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("WaterDrop6:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(381, 166)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("WaterDrop6:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("WaterDrop7:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(380, 166)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("WaterDrop7:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("WaterDrop8:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(365, 166)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("WaterDrop8:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("WaterDrop9:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(370, 166)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("WaterDrop9:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("WaterDrop10:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(376, 166)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("WaterDrop10:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mk6al"]
+resource_name = "water_drop"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaterDrop:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(361, 166), Vector2(361, 226)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WaterDrop:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WaterDrop2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(363, 166), Vector2(363, 226)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WaterDrop2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0009999999, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WaterDrop3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(365, 166), Vector2(365, 226)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WaterDrop3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WaterDrop4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(379, 166), Vector2(379, 226)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WaterDrop4:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WaterDrop5:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(372, 166), Vector2(372, 226)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WaterDrop5:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("WaterDrop6:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(381, 166), Vector2(381, 226)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("WaterDrop6:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("WaterDrop7:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(380, 166), Vector2(380, 226)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("WaterDrop7:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("WaterDrop8:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(365, 166), Vector2(365, 226)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("WaterDrop8:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("WaterDrop9:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(370, 166), Vector2(370, 226)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("WaterDrop9:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("WaterDrop10:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(376, 166), Vector2(376, 226)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("WaterDrop10:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dvy2v"]
+_data = {
+&"RESET": SubResource("Animation_yd5gq"),
+&"water_drop": SubResource("Animation_mk6al")
+}
+
+[sub_resource type="Gradient" id="Gradient_bnp4x"]
+offsets = PackedFloat32Array(0, 0.042168673, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_od0go"]
+gradient = SubResource("Gradient_bnp4x")
+width = 16
+height = 4
+fill_from = Vector2(0, 0.29565218)
+fill_to = Vector2(0.96086955, 0.71304345)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_od0go"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(180, 25, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 10.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.40392157, 0.8117647, 0.8784314, 1)
+
+[node name="WashStation" type="Node2D" unique_id=2019300199]
+position = Vector2(-65, -39)
+script = ExtResource("1_ali5p")
+
+[node name="WashProgress" type="ProgressBar" parent="." unique_id=2132624487]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = -73.0
+grow_vertical = 2
+scale = Vector2(0.821039, 1.0773052)
+max_value = 3.0
+
+[node name="Sink" type="Sprite2D" parent="." unique_id=626241377]
+position = Vector2(305.695, 173.71873)
+scale = Vector2(0.85466075, 0.4795759)
+texture = ExtResource("2_bnp4x")
+
+[node name="SinkArea" type="Area2D" parent="Sink" unique_id=195899997]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sink/SinkArea" unique_id=860352705]
+position = Vector2(0.27794957, 109.12503)
+scale = Vector2(0.9999997, 0.9999994)
+shape = SubResource("RectangleShape2D_ajtct")
+
+[node name="Chicken" parent="." unique_id=400921387 instance=ExtResource("3_06oei")]
+position = Vector2(240, 74.000015)
+scale = Vector2(0.7, 0.683)
+
+[node name="Potato" parent="." unique_id=1441973441 instance=ExtResource("4_ali5p")]
+position = Vector2(-63, -105.000015)
+scale = Vector2(1.0476003, 1.0005068)
+
+[node name="IngredientSprite" parent="Potato" index="0" unique_id=649083374]
+position = Vector2(522.2972, 351.16443)
+
+[node name="DirtSpot1" parent="Potato/Dirt" parent_id_path=PackedInt32Array(1441973441, 1259833926) index="0" unique_id=1442802832]
+position = Vector2(531.9102, 350.33893)
+
+[node name="DirtSpot2" parent="Potato/Dirt" parent_id_path=PackedInt32Array(1441973441, 1259833926) index="1" unique_id=860428719]
+position = Vector2(515.3144, 342.02182)
+
+[node name="DirtSpot3" parent="Potato/Dirt" parent_id_path=PackedInt32Array(1441973441, 1259833926) index="2" unique_id=902857026]
+position = Vector2(524.10754, 357.01794)
+
+[node name="DirtSpot4" parent="Potato/Dirt" parent_id_path=PackedInt32Array(1441973441, 1259833926) index="3" unique_id=760415345]
+position = Vector2(514.3374, 350.0199)
+
+[node name="water" type="Node2D" parent="." unique_id=999860500]
+
+[node name="WaterAnimation" type="AnimationPlayer" parent="water" unique_id=669335953]
+libraries/ = SubResource("AnimationLibrary_dvy2v")
+
+[node name="WaterDrop" type="Polygon2D" parent="water" unique_id=2115958712]
+position = Vector2(361, 166)
+scale = Vector2(0.5, 0.5)
+color = Color(0.40392157, 0.8117647, 0.8784314, 1)
+texture_scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(0, -6, 4, -2, 3, 4, 0, 6, -3, 4, -4, -2)
+
+[node name="WaterDrop2" type="Polygon2D" parent="water" unique_id=1024139909]
+position = Vector2(363, 166)
+scale = Vector2(0.5, 0.5)
+color = Color(0.40392157, 0.8117647, 0.8784314, 1)
+texture_scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(0, -6, 4, -2, 3, 4, 0, 6, -3, 4, -4, -2)
+
+[node name="WaterDrop3" type="Polygon2D" parent="water" unique_id=1067430441]
+visible = false
+position = Vector2(365, 166)
+scale = Vector2(0.5, 0.5)
+color = Color(0.40392157, 0.8117647, 0.8784314, 1)
+texture_scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(0, -6, 4, -2, 3, 4, 0, 6, -3, 4, -4, -2)
+
+[node name="WaterDrop4" type="Polygon2D" parent="water" unique_id=2074807189]
+visible = false
+position = Vector2(379, 166)
+scale = Vector2(0.5, 0.5)
+color = Color(0.40392157, 0.8117647, 0.8784314, 1)
+texture_scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(0, -6, 4, -2, 3, 4, 0, 6, -3, 4, -4, -2)
+
+[node name="WaterDrop5" type="Polygon2D" parent="water" unique_id=1813350950]
+visible = false
+position = Vector2(372, 166)
+scale = Vector2(0.5, 0.5)
+color = Color(0.40392157, 0.8117647, 0.8784314, 1)
+texture_scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(0, -6, 4, -2, 3, 4, 0, 6, -3, 4, -4, -2)
+
+[node name="WaterDrop6" type="Polygon2D" parent="water" unique_id=1766602681]
+position = Vector2(381, 166)
+scale = Vector2(0.5, 0.5)
+color = Color(0.40392157, 0.8117647, 0.8784314, 1)
+texture_scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(0, -6, 4, -2, 3, 4, 0, 6, -3, 4, -4, -2)
+
+[node name="WaterDrop7" type="Polygon2D" parent="water" unique_id=2069728032]
+position = Vector2(380, 166)
+scale = Vector2(0.5, 0.5)
+color = Color(0.40392157, 0.8117647, 0.8784314, 1)
+texture_scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(0, -6, 4, -2, 3, 4, 0, 6, -3, 4, -4, -2)
+
+[node name="WaterDrop8" type="Polygon2D" parent="water" unique_id=930216060]
+position = Vector2(365, 166)
+scale = Vector2(0.5, 0.5)
+color = Color(0.40392157, 0.8117647, 0.8784314, 1)
+texture_scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(0, -6, 4, -2, 3, 4, 0, 6, -3, 4, -4, -2)
+
+[node name="WaterDrop9" type="Polygon2D" parent="water" unique_id=550312440]
+position = Vector2(370, 166)
+scale = Vector2(0.5, 0.5)
+color = Color(0.40392157, 0.8117647, 0.8784314, 1)
+texture_scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(0, -6, 4, -2, 3, 4, 0, 6, -3, 4, -4, -2)
+
+[node name="WaterDrop10" type="Polygon2D" parent="water" unique_id=314519234]
+position = Vector2(376, 166)
+scale = Vector2(0.5, 0.5)
+color = Color(0.40392157, 0.8117647, 0.8784314, 1)
+polygon = PackedVector2Array(0, -6, 4, -2, 3, 4, 0, 6, -3, 4, -4, -2)
+
+[node name="WaterParticles" type="GPUParticles2D" parent="water" unique_id=563100413]
+position = Vector2(307, 225)
+scale = Vector2(0.5, 0.5)
+amount = 20
+texture = SubResource("GradientTexture2D_od0go")
+lifetime = 1.5
+preprocess = 1.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_od0go")
+
+[editable path="Potato"]
