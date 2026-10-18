@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://4pqund3nukl7"]
+
+[ext_resource type="Script" uid="uid://dtdaj8mwlt2k" path="res://node_2d.gd" id="1_kdubu"]
+[ext_resource type="Texture2D" uid="uid://7nabcbej86ks" path="res://background/Copy of Bg.png" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://cx6ja08tijwfq" path="res://buttonimg/Button23.png" id="2_0e48y"]
+[ext_resource type="Texture2D" uid="uid://doajmroemtdjy" path="res://buttonimg/Button24.png" id="3_0hol4"]
+[ext_resource type="FontFile" uid="uid://c8r8ivrkyepys" path="res://font/PeaberryMono.ttf" id="3_q6r6c"]
+[ext_resource type="Script" uid="uid://d4julh7mykwjh" path="res://play_button.gd" id="4_d21ai"]
+[ext_resource type="Script" uid="uid://cgyunre2i5jpg" path="res://settings_button.gd" id="6_rj586"]
+[ext_resource type="Texture2D" uid="uid://d37yx5wkt6ydm" path="res://buttonimg/Button25.png" id="8_ir8iy"]
+[ext_resource type="Script" uid="uid://c74a8hn4r7c8c" path="res://exit_button.gd" id="9_4d7sh"]
+[ext_resource type="Texture2D" uid="uid://dquhdqbfy6de7" path="res://background/1788320500814.png" id="10_ir8iy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85y3i"]
+bg_color = Color(0.99215686, 0.827451, 0.5882353, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7vvk"]
+bg_color = Color(0.9843137, 0.9019608, 0.69411767, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="FontVariation" id="FontVariation_s4riv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_btaim"]
+font = ExtResource("3_q6r6c")
+font_size = 25
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s4riv"]
+font = ExtResource("3_q6r6c")
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_85y3i"]
+font = ExtResource("3_q6r6c")
+font_size = 25
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Node" type="Control" unique_id=1728770090]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kdubu")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=447258575]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wtcfe")
+expand_mode = 1
+
+[node name="button_manager" type="Control" parent="." unique_id=325581458]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="outer_panel" type="Panel" parent="button_manager" unique_id=2048035306]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -157.0
+offset_top = -82.0
+offset_right = -34.0
+offset_bottom = 83.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_85y3i")
+
+[node name="inner_panel" type="Panel" parent="button_manager/outer_panel" unique_id=829284563]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = -70.5
+offset_right = 57.75
+offset_bottom = 79.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h7vvk")
+
+[node name="play_button" type="TextureButton" parent="button_manager/outer_panel/inner_panel" unique_id=172081279]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 117.0
+offset_bottom = 63.0
+texture_normal = ExtResource("2_0e48y")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_d21ai")
+
+[node name="play_label" type="Label" parent="button_manager/outer_panel/inner_panel/play_button" unique_id=1432664645]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -11.0
+offset_right = 31.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_s4riv")
+text = "PLAY"
+label_settings = SubResource("LabelSettings_btaim")
+
+[node name="settings_button" type="TextureButton" parent="button_manager/outer_panel/inner_panel" unique_id=903361265]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 43.0
+offset_right = 117.0
+offset_bottom = 110.0
+texture_normal = ExtResource("3_0hol4")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_rj586")
+
+[node name="settings_label" type="Label" parent="button_manager/outer_panel/inner_panel/settings_button" unique_id=307872279]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -8.0
+offset_right = 40.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_s4riv")
+
+[node name="exit_button" type="TextureButton" parent="button_manager/outer_panel/inner_panel" unique_id=58974434]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 88.0
+offset_right = 119.0
+offset_bottom = 155.0
+texture_normal = ExtResource("8_ir8iy")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("9_4d7sh")
+
+[node name="exit_label" type="Label" parent="button_manager/outer_panel/inner_panel/exit_button" unique_id=339226793]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -11.0
+offset_right = 31.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+label_settings = SubResource("LabelSettings_85y3i")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=325423435]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 70.0
+offset_right = 282.0
+offset_bottom = 216.0
+texture = ExtResource("10_ir8iy")
+expand_mode = 1
+
+[connection signal="pressed" from="button_manager/outer_panel/inner_panel/play_button" to="button_manager/outer_panel/inner_panel/play_button" method="_on_pressed"]
+[connection signal="pressed" from="button_manager/outer_panel/inner_panel/settings_button" to="button_manager/outer_panel/inner_panel/settings_button" method="_on_pressed"]
+[connection signal="pressed" from="button_manager/outer_panel/inner_panel/exit_button" to="button_manager/outer_panel/inner_panel/exit_button" method="_on_pressed"]
